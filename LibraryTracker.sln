@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryTracker", "LibraryTracker\LibraryTracker.csproj", "{C6605AC3-B6F6-45A4-8433-A86D596CAD4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6605AC3-B6F6-45A4-8433-A86D596CAD4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6605AC3-B6F6-45A4-8433-A86D596CAD4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6605AC3-B6F6-45A4-8433-A86D596CAD4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6605AC3-B6F6-45A4-8433-A86D596CAD4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
