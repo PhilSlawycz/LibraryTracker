@@ -1,12 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LibraryTracker.Services;
+using Microsoft.Extensions.Logging;
 
 namespace LibraryTracker;
-
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
+        builder.Services.AddSingleton<DatabaseService>();
         builder
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
@@ -14,7 +15,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
+        
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
