@@ -4,39 +4,41 @@ namespace LibraryTracker.Services;
 
 public class DatabaseService
 {
-    private SQLiteAsyncConnection? Library_DB;
+    private SQLiteAsyncConnection? _libraryDb;
 
-    private async Task Init()
+    private async Task <SQLiteAsyncConnection> EnsureConnectionAsync()
     {
-        if (Library_DB != null)
-            return;
-        Library_DB = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
-        var result = await Library_DB.CreateTableAsync<Book>();
+        if (_libraryDb != null)
+            return _libraryDb;
+        _libraryDb = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+        await _libraryDb.CreateTableAsync<Book>();
+        return _libraryDb;
 
     }
 
     public async Task<List<Book>> GetBooksAsync()
     {
-        await Init();
-        return await Library_DB.Table<Book>().ToListAsync();
+        var db = await EnsureConnectionAsync();
+        return await db.Table<Book>().ToListAsync();
     }
 
     public async Task<int> SaveBookAsync(Book book)
     {
-        await Init();
+        var db = await EnsureConnectionAsync();
         if (book.Id != 0)
         {
-            return await Library_DB.UpdateAsync(book);   
+            return await db.UpdateAsync(book);   
         }else
         {
-            return await Library_DB.InsertAsync(book);
+            return await db.InsertAsync(book);
         }
     }
 
     public async Task<int> DeleteBookAsync(Book book)
     {
-        await Init();
-        return await Library_DB.DeleteAsync(book);
+
+        var db = await EnsureConnectionAsync();
+        return await db.DeleteAsync(book);
     }
     
 }

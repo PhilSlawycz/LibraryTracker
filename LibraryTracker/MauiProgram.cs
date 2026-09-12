@@ -8,6 +8,7 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder.Services.AddSingleton<DatabaseService>();
+        builder.Services.AddTransient<MainPage>();
         builder
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
