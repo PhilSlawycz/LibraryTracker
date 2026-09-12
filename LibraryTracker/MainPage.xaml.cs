@@ -30,19 +30,6 @@ public partial class MainPage : ContentPage
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        var testBook = new Book
-        {
-            Title = "Test Book",
-            Author = "Test Author",
-            Isbn = "1234567890",
-            Genre = "Test Genre",
-            IsRead = true,
-            DateRead = DateTime.Now,
-            DateAdded = DateTime.Now
-
-        };
-        
-        await _databaseService.SaveBookAsync(testBook);
         
         var allBooks = await _databaseService.GetBooksAsync();
         System.Diagnostics.Debug.WriteLine($"Books in database: {allBooks.Count}");

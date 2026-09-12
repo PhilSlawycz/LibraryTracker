@@ -4,10 +4,12 @@ namespace LibraryTracker;
 
 public partial class App : Application
 {
+    private readonly DatabaseService _databaseService;
+
     public App(DatabaseService databaseService)
     {
         InitializeComponent();
-        MainPage = new MainPage(databaseService);
+        _databaseService = databaseService;
     }
 
     protected override Window CreateWindow(IActivationState? activationState)

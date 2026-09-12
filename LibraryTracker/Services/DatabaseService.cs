@@ -12,6 +12,7 @@ public class DatabaseService
             return _libraryDb;
         _libraryDb = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
         await _libraryDb.CreateTableAsync<Book>();
+        System.Diagnostics.Debug.WriteLine($"Database path {Constants.DatabasePath}");
         return _libraryDb;
 
     }
